@@ -26,8 +26,30 @@ namespace Planetario
             double f = MForza(p, p1, p2);
             return new Vettore(v.x * f, v.y * f);
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Planetario planetario = new Planetario();
+            List<Vettore> ForzeP = new List<Vettore>();
+            for (int i = 0; i < planetario.pianeti.Count; i++)
+            {
+                for (int j = 0; j < planetario.pianeti.Count; j++)
+                {
+                    if (planetario.pianeti[i] != planetario.pianeti[j])
+                    {
+                        ForzeP[i] += VForza(planetario, planetario.pianeti[i], planetario.pianeti[j]);
+                    }
+                }
+            }
+            for(int i = 0; i < ForzeP.Count; i++)
+            {
+                planetario.pianeti[i].Posizione += ForzeP[i];
+            }
+            //disegna il pianeta
         }
     }
 }
