@@ -33,7 +33,7 @@ namespace Planetario
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Planetario planetario = new Planetario();
+            Planetario planetario = new Planetario(); // non va qua
             List<Vettore> ForzeP = new List<Vettore>();
             for (int i = 0; i < planetario.pianeti.Count; i++)
             {
