@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Planetario
 {
-    internal class Vettore
+    public class Vettore
     {
         public double x;
         public double y;
@@ -23,11 +23,15 @@ namespace Planetario
         {
             return new Vettore(v1.x - v2.x, v1.y - v2.y);
         }
+        public static Vettore operator *(Vettore v1, double scalare)
+        {
+            return new Vettore(v1.x * scalare, v1.y * scalare);
+        }
         public double Modulo ()
         {
             return Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
         }
-        public Vettore Versore(Vettore v)
+        public Vettore Versore()
         {
             return new Vettore(x / Math.Abs(x), y / Math.Abs(y));
         }

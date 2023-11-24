@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Planetario
 {
-    internal class Pianeta
+    public class Pianeta
     {
         public Pianeta() { }
-
-        public double massa { get; set; }
-        public Vettore posizione { get; set; }
+        public double Massa { get; set; }
+        public Vettore Posizione { get; set; }
 
     }
 }

@@ -16,7 +16,16 @@ namespace Planetario
         {
             InitializeComponent();
         }
-
+        public static double MForza(Planetario p, Pianeta p1, Pianeta p2)
+        {
+            return (p.G * p1.Massa * p2.Massa) / Math.Pow((p2.Posizione - p1.Posizione).Modulo(), 2);
+        }
+        public static Vettore VForza(Planetario p, Pianeta p1, Pianeta p2)
+        {
+            Vettore v = (p2.Posizione - p1.Posizione).Versore();
+            double f = MForza(p, p1, p2);
+            return new Vettore(v.x * f, v.y * f);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
         }

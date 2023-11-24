@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Planetario
 {
-    internal class Planetario
+    public class Planetario
     {
         List <Pianeta> Pianeti = new List<Pianeta> ();
         public double G { get; set; }
