@@ -31,37 +31,61 @@ namespace Planetario
             double f = MForza(p, p1, p2);
             return new Vettore(v.x * f, v.y * f);
         }
-
+        private void DrawPianeta(Graphics g, Pianeta pianeta, Color colore)
+        {
+            float x = (float)pianeta.Posizione.x;
+            float y = (float)pianeta.Posizione.y;
+            float raggio = 10.0f;
+            g.FillEllipse(new SolidBrush(colore), x, y, raggio, raggio);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
+            Pianeta p = new Pianeta();
+            p.Posizione = new Vettore(0, 2);
+            p.Massa = 200;
+            p.Velocita = new Vettore(3, 4);
+            Pianeta p1 = new Pianeta();
+            p1.Posizione = new Vettore(5, 3);
+            p1.Massa = 250;
+            p1.Velocita = new Vettore(7, 6);
+            planetario.Pianeti.Add(p1);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-             // non va qua
             List<Vettore> ForzeP = new List<Vettore>();
-            for (int i = 0; i < planetario.pianeti.Count; i++)
+            // Calcola Forza totale dei Pianeti
+            for (int i = 0; i < planetario.Pianeti.Count; i++)
             {
-                for (int j = 0; j < planetario.pianeti.Count; j++)
+                for (int j = 0; j < planetario.Pianeti.Count; j++)
                 {
-                    if (planetario.pianeti[i] != planetario.pianeti[j])
+                    if (planetario.Pianeti[i] != planetario.Pianeti[j])
                     {
-                        ForzeP[i] += VForza(planetario, planetario.pianeti[i], planetario.pianeti[j]);
+                        ForzeP[i] += VForza(planetario, planetario.Pianeti[i], planetario.Pianeti[j]);
                     }
                 }
             }
-            for (int i = 0; i < planetario.pianeti.Count; i++)
+            // Calcola nuova posizione dei Pianeti
+            for (int i = 0; i < planetario.Pianeti.Count; i++)
             {
-                Pianeta p = planetario.pianeti[i];
+                Pianeta p = planetario.Pianeti[i];
                 Vettore a = ForzeP[i] / p.Massa;
                 Vettore v = a * t;
-                if(cont < planetario.pianeti.Count)
+                if(cont < planetario.Pianeti.Count)
                 {
-                    v = planetario.pianeti[i].Velocita;
+                    v = planetario.Pianeti[i].Velocita;
                 }
                 Vettore S = p.Posizione + v * t + (a * (double)(1 / 2)  * (t * t));
-                planetario.pianeti[i].Posizione = S;
+                planetario.Pianeti[i].Posizione = S;
             }
-            //disegna il pianeta
+            // Disegna i Pianeti
+            using (Graphics g = this.CreateGraphics())
+            {
+                for (int i = 0; i < planetario.Pianeti.Count; i++)
+                {
+                    Pianeta p = planetario.Pianeti[i];
+                    DrawPianeta(g, p, Color.Blue);
+                }
+            }
         }
     }
 }
