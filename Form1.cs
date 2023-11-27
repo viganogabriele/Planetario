@@ -14,10 +14,12 @@ namespace Planetario
     {
         Planetario planetario = new Planetario();
         int cont = 0;
-        double t = planetario.Timer;
+        double t;
         public Form1()
         {
             InitializeComponent();
+            planetario.G = 6.67;
+            t = planetario.Timer;
         }
         public static double MForza(Planetario p, Pianeta p1, Pianeta p2)
         {
