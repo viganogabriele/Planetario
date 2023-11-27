@@ -11,6 +11,7 @@ namespace Planetario
         public Pianeta() { }
         public double Massa { get; set; }
         public Vettore Posizione { get; set; }
+        public Vettore Velocita { get; set; }
 
     }
 }

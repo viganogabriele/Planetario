@@ -10,5 +10,6 @@ namespace Planetario
     {
         public List <Pianeta> pianeti = new List<Pianeta> ();
         public double G { get; set; }
+        public double Timer { get; set; }
     }
 }

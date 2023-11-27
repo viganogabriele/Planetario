@@ -12,6 +12,9 @@ namespace Planetario
 {
     public partial class Form1 : Form
     {
+        Planetario planetario = new Planetario();
+        int cont = 0;
+        double t = planetario.Timer;
         public Form1()
         {
             InitializeComponent();
@@ -30,10 +33,9 @@ namespace Planetario
         private void Form1_Load(object sender, EventArgs e)
         {
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Planetario planetario = new Planetario(); // non va qua
+             // non va qua
             List<Vettore> ForzeP = new List<Vettore>();
             for (int i = 0; i < planetario.pianeti.Count; i++)
             {
@@ -45,9 +47,17 @@ namespace Planetario
                     }
                 }
             }
-            for(int i = 0; i < ForzeP.Count; i++)
+            for (int i = 0; i < planetario.pianeti.Count; i++)
             {
-                planetario.pianeti[i].Posizione += ForzeP[i];
+                Pianeta p = planetario.pianeti[i];
+                Vettore a = ForzeP[i] / p.Massa;
+                Vettore v = a * t;
+                if(cont < planetario.pianeti.Count)
+                {
+                    v = planetario.pianeti[i].Velocita;
+                }
+                Vettore S = p.Posizione + v * t + (a * (double)(1 / 2)  * (t * t));
+                planetario.pianeti[i].Posizione = S;
             }
             //disegna il pianeta
         }
