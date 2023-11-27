@@ -74,7 +74,7 @@ namespace Planetario
                 {
                     v = planetario.Pianeti[i].Velocita;
                 }
-                Vettore S = p.Posizione + v * t + (a * (double)(1 / 2)  * (t * t));
+                Vettore S = p.Posizione + v * t + (a * 0.5 * (t * t));
                 planetario.Pianeti[i].Posizione = S;
             }
             // Disegna i Pianeti

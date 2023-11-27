@@ -39,6 +39,5 @@ namespace Planetario
         {
             return new Vettore(x / Math.Abs(x), y / Math.Abs(y));
         }
-
     }
 }
