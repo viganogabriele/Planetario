@@ -19,6 +19,7 @@ namespace Planetario
         {
             InitializeComponent();
             t = planetario.Timer;
+            //timer1.Interval = (int)(t * 1000);
         }
         public static double MForza(Planetario p, Pianeta p1, Pianeta p2)
         {
@@ -32,10 +33,19 @@ namespace Planetario
         }
         private void DisegnaPianeta(Graphics g, Pianeta pianeta, Color colore)
         {
-            float x = (float)pianeta.Posizione.x;
-            float y = (float)pianeta.Posizione.y;
-            float raggio = 10.0f;
+            float raggio = CalcolaRaggioPianeta(pianeta.Massa);
+            float x = (float)(pianeta.Posizione.x);
+            float y = (float)(pianeta.Posizione.y);
             g.FillEllipse(new SolidBrush(colore), x, y, raggio, raggio);
+        }
+        private float CalcolaRaggioPianeta(double massa)
+        {
+            //for (int i = 0; i < massa; i+=10000) Trovare una proprietà sensata per calcolare il raggio
+            if(massa > Math.Pow(10, 20))
+            {
+                return 20;
+            }
+            return 10;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -43,10 +53,6 @@ namespace Planetario
             Pianeta p2 = new Pianeta(7.3 * Math.Pow(10, 22), new Vettore(600, 500), new Vettore(2, 3));
             planetario.Pianeti.Add(p1);
             planetario.Pianeti.Add(p2);
-            if (p1 == p2)
-            {
-
-            }
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -73,6 +79,7 @@ namespace Planetario
                 Vettore S = planetario.Pianeti[i].Posizione + planetario.Pianeti[i].Velocita * t + (planetario.Pianeti[i].Accelerazione * 0.5 * (t * t));
                 planetario.Pianeti[i].Posizione = S;
                 Vettore v = planetario.Pianeti[i].Accelerazione * t;
+                //planetario.Pianeti[i].Velocita= v;
             }
             // Disegna i Pianeti
 
