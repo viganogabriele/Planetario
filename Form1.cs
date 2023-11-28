@@ -15,6 +15,7 @@ namespace Planetario
         Planetario planetario = new Planetario();
         Color[] colori = { Color.Blue, Color.Red, Color.Green, Color.Yellow, Color.Orange, Color.Purple, Color.Cyan };
         double t;
+        bool start = false;
         public Form1()
         {
             InitializeComponent();
@@ -50,12 +51,14 @@ namespace Planetario
         private void Form1_Load(object sender, EventArgs e)
         {
             Pianeta p1 = new Pianeta(6 * Math.Pow(10, 24), new Vettore(100, 150), new Vettore(1, 4));
-            Pianeta p2 = new Pianeta(7.3 * Math.Pow(10, 22), new Vettore(600, 500), new Vettore(2, 3));
+            Pianeta p2 = new Pianeta(7.3 * Math.Pow(10, 22), new Vettore(300, 200), new Vettore(2, 3));
             planetario.Pianeti.Add(p1);
             planetario.Pianeti.Add(p2);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (start == true) 
+            { 
             List <Vettore> ForzeP = new List <Vettore>(planetario.Pianeti.Count);
             for (int i = 0; i < planetario.Pianeti.Count; i++)
             {
@@ -79,7 +82,7 @@ namespace Planetario
                 Vettore S = planetario.Pianeti[i].Posizione + planetario.Pianeti[i].Velocita * t + (planetario.Pianeti[i].Accelerazione * 0.5 * (t * t));
                 planetario.Pianeti[i].Posizione = S;
                 Vettore v = planetario.Pianeti[i].Accelerazione * t;
-                //planetario.Pianeti[i].Velocita= v;
+                planetario.Pianeti[i].Velocita= v;
             }
             // Disegna i Pianeti
 
@@ -90,6 +93,21 @@ namespace Planetario
                     Pianeta p = planetario.Pianeti[i];
                     DisegnaPianeta(g, p, colori[i]);
                 }
+            }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (start == false)
+            {
+                start = true;
+                button1.Text = "Stop";
+            }
+            else
+            {
+                start = false;
+                button1.Text = "Start";
             }
         }
     }
