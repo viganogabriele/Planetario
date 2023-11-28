@@ -18,7 +18,6 @@ namespace Planetario
         public Form1()
         {
             InitializeComponent();
-            planetario.G = 6.67;
             t = planetario.Timer;
         }
         public static double MForza(Planetario p, Pianeta p1, Pianeta p2)
@@ -40,20 +39,28 @@ namespace Planetario
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Pianeta p1 = new Pianeta(200, new Vettore(2, 6), new Vettore(3, 4));
-            Pianeta p2 = new Pianeta(250, new Vettore(5, 3), new Vettore(7, 6));
+            Pianeta p1 = new Pianeta(6 * Math.Pow(10, 24), new Vettore(2, 6), new Vettore(3, 4));
+            Pianeta p2 = new Pianeta(7.3, new Vettore(10, 22), new Vettore(7, 6));
             planetario.Pianeti.Add(p1);
             planetario.Pianeti.Add(p2);
+            if (p1 == p2)
+            {
+
+            }
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            List<Vettore> ForzeP = new List<Vettore>();
+            List <Vettore> ForzeP = new List <Vettore>(planetario.Pianeti.Count);
+            for (int i = 0; i < planetario.Pianeti.Count; i++)
+            {
+                ForzeP.Add(new Vettore(0, 0));
+            }
             // Calcola Forza totale dei Pianeti
             for (int i = 0; i < planetario.Pianeti.Count; i++)
             {
                 for (int j = 0; j < planetario.Pianeti.Count; j++)
                 {
-                    if (planetario.Pianeti[i] != planetario.Pianeti[j])
+                    if (i != j) 
                     {
                         ForzeP[i] += VForza(planetario, planetario.Pianeti[i], planetario.Pianeti[j]);
                     }
