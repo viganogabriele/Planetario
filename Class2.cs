@@ -12,12 +12,13 @@ namespace Planetario
         public double Massa { get; set; }
         public Vettore Posizione { get; set; }
         public Vettore Velocita { get; set; }
-        public Pianeta(double massa, Vettore posizione, Vettore velocita)
+        public Vettore Accelerazione { get; set; }
+        public Pianeta(double massa, Vettore posizione, Vettore velocita, Vettore accelerazione)
         {
             Massa = massa;
             Posizione = posizione;
             Velocita = velocita;
+            Accelerazione = accelerazione;
         }
-
     }
 }
