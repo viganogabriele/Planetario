@@ -13,7 +13,7 @@ namespace Planetario
     public partial class Form1 : Form
     {
         Planetario planetario = new Planetario();
-
+        Color[] colori = { Color.Blue, Color.Red, Color.Green, Color.Yellow, Color.Orange, Color.Purple, Color.Cyan };
         double t;
         public Form1()
         {
@@ -39,8 +39,8 @@ namespace Planetario
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Pianeta p1 = new Pianeta(6 * Math.Pow(10, 24), new Vettore(2, 6), new Vettore(3, 4));
-            Pianeta p2 = new Pianeta(7.3, new Vettore(10, 22), new Vettore(7, 6));
+            Pianeta p1 = new Pianeta(6 * Math.Pow(10, 24), new Vettore(100, 150), new Vettore(1, 4));
+            Pianeta p2 = new Pianeta(7.3 * Math.Pow(10, 22), new Vettore(600, 500), new Vettore(2, 3));
             planetario.Pianeti.Add(p1);
             planetario.Pianeti.Add(p2);
             if (p1 == p2)
@@ -75,12 +75,13 @@ namespace Planetario
                 Vettore v = planetario.Pianeti[i].Accelerazione * t;
             }
             // Disegna i Pianeti
+
             using (Graphics g = this.CreateGraphics())
             {
                 for (int i = 0; i < planetario.Pianeti.Count; i++)
                 {
                     Pianeta p = planetario.Pianeti[i];
-                    DisegnaPianeta(g, p, Color.Blue);
+                    DisegnaPianeta(g, p, colori[i]);
                 }
             }
         }
