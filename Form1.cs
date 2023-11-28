@@ -50,8 +50,8 @@ namespace Planetario
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Pianeta p1 = new Pianeta(6 * Math.Pow(10, 24), new Vettore(100, 150), new Vettore(1, 4));
-            Pianeta p2 = new Pianeta(7.3 * Math.Pow(10, 22), new Vettore(300, 200), new Vettore(2, 3));
+            Pianeta p1 = new Pianeta(6 * Math.Pow(10, 24), new Vettore(100, 150), new Vettore(0, 0));
+            Pianeta p2 = new Pianeta(7.3 * Math.Pow(10, 22), new Vettore(300, 200), new Vettore(0, 0));
             planetario.Pianeti.Add(p1);
             planetario.Pianeti.Add(p2);
         }
@@ -107,7 +107,7 @@ namespace Planetario
             else
             {
                 start = false;
-                button1.Text = "Start";
+                button1.Text = "Stop";
             }
         }
     }
