@@ -13,7 +13,7 @@ namespace Planetario
     public partial class Form1 : Form
     {
         Planetario planetario = new Planetario();
-        int cont = 0;
+
         double t;
         public Form1()
         {
@@ -40,15 +40,10 @@ namespace Planetario
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Pianeta p = new Pianeta();
-            p.Posizione = new Vettore(0, 2);
-            p.Massa = 200;
-            p.Velocita = new Vettore(3, 4);
-            Pianeta p1 = new Pianeta();
-            p1.Posizione = new Vettore(5, 3);
-            p1.Massa = 250;
-            p1.Velocita = new Vettore(7, 6);
+            Pianeta p1 = new Pianeta(200, new Vettore(2, 6), new Vettore(3, 4));
+            Pianeta p2 = new Pianeta(250, new Vettore(5, 3), new Vettore(7, 6));
             planetario.Pianeti.Add(p1);
+            planetario.Pianeti.Add(p2);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -68,11 +63,9 @@ namespace Planetario
             for (int i = 0; i < planetario.Pianeti.Count; i++)
             {
                 planetario.Pianeti[i].Accelerazione = ForzeP[i] / planetario.Pianeti[i].Massa;
-
                 Vettore S = planetario.Pianeti[i].Posizione + planetario.Pianeti[i].Velocita * t + (planetario.Pianeti[i].Accelerazione * 0.5 * (t * t));
                 planetario.Pianeti[i].Posizione = S;
                 Vettore v = planetario.Pianeti[i].Accelerazione * t;
-                cont++;
             }
             // Disegna i Pianeti
             using (Graphics g = this.CreateGraphics())

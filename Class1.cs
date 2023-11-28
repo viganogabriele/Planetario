@@ -9,7 +9,7 @@ namespace Planetario
     public class Planetario
     {
         public List <Pianeta> Pianeti = new List<Pianeta> ();
-        public double G { get; set; }
+        public double G { get; set; } = 6.67;
         public double Timer { get; set; } = 0.001;
     }
 }
