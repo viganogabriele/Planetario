@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Class2.cs" />
-    <Compile Include="Class3.cs" />
+    <Compile Include="Planetario.cs" />
+    <Compile Include="Pianeta.cs" />
+    <Compile Include="Vettore.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

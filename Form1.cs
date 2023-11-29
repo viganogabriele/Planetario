@@ -14,24 +14,13 @@ namespace Planetario
     {
         Planetario planetario = new Planetario();
         Color[] colori = { Color.Blue, Color.Red, Color.Green, Color.Yellow, Color.Orange, Color.Purple, Color.Cyan };
-        double t;
         bool start = false;
         public Form1()
         {
             InitializeComponent();
-            t = planetario.Timer;
             //timer1.Interval = (int)(t * 1000);
         }
-        public static double MForza(Planetario p, Pianeta p1, Pianeta p2)
-        {
-            return (p.G * p1.Massa * p2.Massa) / Math.Pow((p2.Posizione - p1.Posizione).Modulo(), 2);
-        }
-        public static Vettore VForza(Planetario p, Pianeta p1, Pianeta p2)
-        {
-            Vettore v = (p2.Posizione - p1.Posizione).Versore();
-            double f = MForza(p, p1, p2);
-            return new Vettore(v.x * f, v.y * f);
-        }
+
         private void DisegnaPianeta(Graphics g, Pianeta pianeta, Color colore)
         {
             float raggio = CalcolaRaggioPianeta(pianeta.Massa);
@@ -42,7 +31,7 @@ namespace Planetario
         private float CalcolaRaggioPianeta(double massa)
         {
             //for (int i = 0; i < massa; i+=10000) Trovare una proprietà sensata per calcolare il raggio
-            if(massa > Math.Pow(10, 20))
+            if (massa > Math.Pow(10, 20))
             {
                 return 20;
             }
@@ -57,43 +46,23 @@ namespace Planetario
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (start == true) 
-            { 
-            List <Vettore> ForzeP = new List <Vettore>(planetario.Pianeti.Count);
-            for (int i = 0; i < planetario.Pianeti.Count; i++)
+            if (start == true)
             {
-                ForzeP.Add(new Vettore(0, 0));
-            }
-            // Calcola Forza totale dei Pianeti
-            for (int i = 0; i < planetario.Pianeti.Count; i++)
-            {
-                for (int j = 0; j < planetario.Pianeti.Count; j++)
+                for (int i = 0; i < 1000; i++)
                 {
-                    if (i != j) 
+                    planetario.Muovi();
+                }
+
+                // Disegna i Pianeti
+
+                using (Graphics g = this.CreateGraphics())
+                {
+                    for (int i = 0; i < planetario.Pianeti.Count; i++)
                     {
-                        ForzeP[i] += VForza(planetario, planetario.Pianeti[i], planetario.Pianeti[j]);
+                        Pianeta p = planetario.Pianeti[i];
+                        DisegnaPianeta(g, p, colori[i]);
                     }
                 }
-            }
-            // Calcola nuova posizione dei Pianeti
-            for (int i = 0; i < planetario.Pianeti.Count; i++)
-            {
-                planetario.Pianeti[i].Accelerazione = ForzeP[i] / planetario.Pianeti[i].Massa;
-                Vettore S = planetario.Pianeti[i].Posizione + planetario.Pianeti[i].Velocita * t + (planetario.Pianeti[i].Accelerazione * 0.5 * (t * t));
-                planetario.Pianeti[i].Posizione = S;
-                Vettore v = planetario.Pianeti[i].Accelerazione * t;
-                planetario.Pianeti[i].Velocita= v;
-            }
-            // Disegna i Pianeti
-
-            using (Graphics g = this.CreateGraphics())
-            {
-                for (int i = 0; i < planetario.Pianeti.Count; i++)
-                {
-                    Pianeta p = planetario.Pianeti[i];
-                    DisegnaPianeta(g, p, colori[i]);
-                }
-            }
             }
         }
 

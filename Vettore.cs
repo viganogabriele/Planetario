@@ -27,17 +27,29 @@ namespace Planetario
         {
             return new Vettore(v1.x * scalare, v1.y * scalare);
         }
+        public static Vettore operator *(double scalare, Vettore v1)
+        {
+            return new Vettore(v1.x * scalare, v1.y * scalare);
+        }
+
         public static Vettore operator /(Vettore v1, double scalare)
         {
             return new Vettore(v1.x / scalare, v1.y / scalare);
         }
+
+        public static Vettore operator /(double scalare, Vettore v1)
+        {
+            return new Vettore(v1.x / scalare, v1.y / scalare);
+        }
+
+
         public double Modulo ()
         {
             return Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
         }
         public Vettore Versore()
         {
-            return new Vettore(x / Math.Abs(x), y / Math.Abs(y));
+            return new Vettore(x / Modulo(), y / Modulo());
         }
     }
 }
