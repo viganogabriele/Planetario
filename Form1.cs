@@ -28,17 +28,12 @@ namespace Planetario
         }
         private float CalcolaRaggioPianeta(double massa)
         {
-            //for (int i = 0; i < massa; i+=10000) Trovare una proprietà sensata per calcolare il raggio
-            if (massa > Math.Pow(10, 20))
-            {
-                return 20;
-            }
-            return 10;
+            return (float) Math.Sqrt(massa);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Pianeta p1 = new Pianeta(6 * Math.Pow(10, 24), new Vettore(100, 150), new Vettore(0, 0));
-            Pianeta p2 = new Pianeta(7.3 * Math.Pow(10, 22), new Vettore(300, 200), new Vettore(0, 0));
+            Pianeta p1 = new Pianeta(100, new Vettore(100, 150), new Vettore(8, 4));
+            Pianeta p2 = new Pianeta(70, new Vettore(200, 100), new Vettore(4, 2));
             planetario.Pianeti.Add(p1);
             planetario.Pianeti.Add(p2);
         }
@@ -46,7 +41,7 @@ namespace Planetario
         {
             if (start == true)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     planetario.Muovi();
                 }

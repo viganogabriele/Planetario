@@ -9,7 +9,7 @@ namespace Planetario
     public class Planetario
     {
         public List <Pianeta> Pianeti = new List<Pianeta> ();
-        public double G { get; set; } =  6.67 * Math.Pow(10, -11);
+        public double G { get; set; } =  6.67;
         public double DeltaT { get; set; } = 0.001;
         /// <summary>
         /// Muove il sistema di pianeti di un tempo DeltaT.
