@@ -10,8 +10,7 @@ namespace Planetario
     {
         public List <Pianeta> Pianeti = new List<Pianeta> ();
         public double G { get; set; } =  6.67 * Math.Pow(10, -11);
-        public double DeltaT { get; set; } = 0.0001;
-
+        public double DeltaT { get; set; } = 0.001;
         /// <summary>
         /// Muove il sistema di pianeti di un tempo DeltaT.
         /// </summary>
@@ -46,14 +45,11 @@ namespace Planetario
                     pianeta.Velocita +
                     Pianeti[i].Accelerazione * DeltaT;
             }
-
         }
-
         static Vettore VettoreForza(double g, Pianeta p1, Pianeta p2)
         {
             double moduloForza = (g * p1.Massa * p2.Massa) / Math.Pow((p2.Posizione - p1.Posizione).Modulo(), 2);
             return moduloForza * (p2.Posizione - p1.Posizione).Versore();
         }
-
     }
 }

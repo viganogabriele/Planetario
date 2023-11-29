@@ -18,9 +18,7 @@ namespace Planetario
         public Form1()
         {
             InitializeComponent();
-            //timer1.Interval = (int)(t * 1000);
         }
-
         private void DisegnaPianeta(Graphics g, Pianeta pianeta, Color colore)
         {
             float raggio = CalcolaRaggioPianeta(pianeta.Massa);
@@ -48,13 +46,11 @@ namespace Planetario
         {
             if (start == true)
             {
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     planetario.Muovi();
                 }
-
                 // Disegna i Pianeti
-
                 using (Graphics g = this.CreateGraphics())
                 {
                     for (int i = 0; i < planetario.Pianeti.Count; i++)
@@ -65,7 +61,6 @@ namespace Planetario
                 }
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (start == false)
@@ -76,7 +71,7 @@ namespace Planetario
             else
             {
                 start = false;
-                button1.Text = "Stop";
+                button1.Text = "Start";
             }
         }
     }
