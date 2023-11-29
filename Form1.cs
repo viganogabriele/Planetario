@@ -19,6 +19,8 @@ namespace Planetario
         {
             InitializeComponent();
             this.BackColor = Color.Black;
+            /*this.BackgroundImage = Properties.Resources.sfondo;
+            this.BackgroundImageLayout = ImageLayout.Stretch;*/
         }
         private void DisegnaPianeta(Graphics g, Pianeta pianeta, Color colore)
         {
