@@ -18,6 +18,7 @@ namespace Planetario
         public Form1()
         {
             InitializeComponent();
+            this.BackColor = Color.Black;
         }
         private void DisegnaPianeta(Graphics g, Pianeta pianeta, Color colore)
         {
@@ -33,9 +34,13 @@ namespace Planetario
         private void Form1_Load(object sender, EventArgs e)
         {
             Pianeta p1 = new Pianeta(100, new Vettore(500, 400), new Vettore(1, 1));
-            Pianeta p2 = new Pianeta(70, new Vettore(550, 350), new Vettore(-2, 1));
+            Pianeta p2 = new Pianeta(200, new Vettore(550, 350), new Vettore(-2, 1));
+            Pianeta p3 = new Pianeta(50, new Vettore(600, 370), new Vettore(0, 1));
+            Pianeta p4 = new Pianeta(20, new Vettore(630, 400), new Vettore(-4, 2));
             planetario.Pianeti.Add(p1);
             planetario.Pianeti.Add(p2);
+            planetario.Pianeti.Add(p3);
+            planetario.Pianeti.Add(p4);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
