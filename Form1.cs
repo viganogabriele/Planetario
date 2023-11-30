@@ -19,8 +19,11 @@ namespace Planetario
         {
             InitializeComponent();
             this.BackColor = Color.Black;
+            /*
             this.BackgroundImage = Properties.Resources.sfondo;
             this.BackgroundImageLayout = ImageLayout.Stretch;
+            */
+            this.WindowState = FormWindowState.Maximized;
         }
         private void DisegnaPianeta(Graphics g, Pianeta pianeta, Color colore)
         {
@@ -43,6 +46,7 @@ namespace Planetario
             planetario.Pianeti.Add(p2);
             planetario.Pianeti.Add(p3);
             planetario.Pianeti.Add(p4);
+            
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -68,12 +72,12 @@ namespace Planetario
             if (start == false)
             {
                 start = true;
-                button1.Text = "Stop";
+                Avvia.Text = "Stop";
             }
             else
             {
                 start = false;
-                button1.Text = "Start";
+                Avvia.Text = "Start";
             }
         }
     }
