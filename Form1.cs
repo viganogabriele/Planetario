@@ -77,7 +77,7 @@ namespace Planetario
             else
             {
                 start = false;
-                Avvia.Text = "Start";
+                Avvia.Text = "Avvia";
             }
         }
     }
