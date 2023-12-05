@@ -15,7 +15,7 @@ namespace Planetario
         Planetario planetario = new Planetario();
         Color[] colori = { Color.Blue, Color.Red, Color.Green, Color.Yellow, Color.Orange, Color.Purple, Color.Cyan };
         bool start = false;
-        int cont = 1;
+        int cont = 2;
         double speed = 1;
         public Form1()
         {
@@ -99,9 +99,13 @@ namespace Planetario
                     speed = 1.5;
                     btnSpeed.Text = "1.5 x";
                     break;
+                case 3:
+                    speed = 2;
+                    btnSpeed.Text = "2 x";
+                    break;
             }
             cont++;
-            if(cont == 3)
+            if(cont == 4)
             {
                 cont = 0;
             }
