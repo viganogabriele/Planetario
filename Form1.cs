@@ -15,6 +15,8 @@ namespace Planetario
         Planetario planetario = new Planetario();
         Color[] colori = { Color.Blue, Color.Red, Color.Green, Color.Yellow, Color.Orange, Color.Purple, Color.Cyan };
         bool start = false;
+        int cont = 1;
+        double speed = 1;
         public Form1()
         {
             InitializeComponent();
@@ -52,7 +54,7 @@ namespace Planetario
         {
             if (start == true)
             {
-                for (int i = 0; i < 500; i++)
+                for (int i = 0; i < speed*250; i++)
                 {
                     planetario.Muovi();
                 }
@@ -78,6 +80,30 @@ namespace Planetario
             {
                 start = false;
                 Avvia.Text = "Avvia";
+            }
+        }
+
+        private void btnSpeed_Click(object sender, EventArgs e)
+        {
+            switch (cont)
+            {
+                case 0:
+                    speed = 0.5;
+                    btnSpeed.Text = "0.5 x";
+                    break;
+                case 1:
+                    speed = 1;
+                    btnSpeed.Text = "1 x";
+                    break;
+                case 2:
+                    speed = 1.5;
+                    btnSpeed.Text = "1.5 x";
+                    break;
+            }
+            cont++;
+            if(cont == 3)
+            {
+                cont = 0;
             }
         }
     }

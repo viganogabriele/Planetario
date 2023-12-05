@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Avvia = new System.Windows.Forms.Button();
+            this.btnSpeed = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -49,11 +50,22 @@
             this.Avvia.UseVisualStyleBackColor = true;
             this.Avvia.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnSpeed
+            // 
+            this.btnSpeed.Location = new System.Drawing.Point(234, 12);
+            this.btnSpeed.Name = "btnSpeed";
+            this.btnSpeed.Size = new System.Drawing.Size(61, 38);
+            this.btnSpeed.TabIndex = 1;
+            this.btnSpeed.Text = "1 x";
+            this.btnSpeed.UseVisualStyleBackColor = true;
+            this.btnSpeed.Click += new System.EventHandler(this.btnSpeed_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 761);
+            this.Controls.Add(this.btnSpeed);
             this.Controls.Add(this.Avvia);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -66,6 +78,7 @@
 
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button Avvia;
+        private System.Windows.Forms.Button btnSpeed;
     }
 }
 
